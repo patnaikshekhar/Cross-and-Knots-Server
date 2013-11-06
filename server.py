@@ -324,6 +324,11 @@ class GameHandler(tornado.websocket.WebSocketHandler):
 
             # Handle the quit event
             currentGame.playerQuit(self)
+        elif self.application.waitingPlayer is not None:
+
+            # If waiting player exits then remove waiting player.
+            if self.application.waitingPlayer.socket == self:
+                self.application.waitingPlayer = None
 
 
 def main():
