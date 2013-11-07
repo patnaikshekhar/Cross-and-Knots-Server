@@ -98,6 +98,8 @@ class Game:
                 currentPlayerOutcome = constants.DRAW_OUTCOME
                 otherPlayerOutcome = constants.DRAW_OUTCOME
 
+                self.deleteGame(socket.application)
+
         # Send move confirmation to player
         currentPlayer.socket.write_message(json.dumps({
             'command': 'move',
